@@ -6,7 +6,7 @@ MAINTAINER Jiang Jiang <jiangjiang@xdf.cn>
 RUN echo 'http://mirrors.ustc.edu.cn/alpine/v3.7/main' > /etc/apk/repositories \ 
     && echo 'http://mirrors.ustc.edu.cn/alpine/v3.7/community' >>/etc/apk/repositories \
     && apk update RUN apk add tzdata 
-    
+
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
 
@@ -114,7 +114,7 @@ RUN set -xe \
 	&& export CFLAGS="$PHP_CFLAGS" \
 		CPPFLAGS="$PHP_CPPFLAGS" \
 		LDFLAGS="$PHP_LDFLAGS" \
-	&& docker-php-source extract \
+	&& /bin/sh /usr/local/bin/docker-php-source extract \
 	&& cd /usr/src/php \
 	&& gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
 	&& ./configure \
