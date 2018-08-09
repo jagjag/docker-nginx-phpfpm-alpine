@@ -238,8 +238,18 @@ RUN set -ex \
 		echo 'listen = 9000'; \
 	} | tee php-fpm.d/zz-docker.conf
 
+
+COPY www.conf /usr/local/etc/php-fpm.d/
+
+RUN /usr/bin/curl -sS https://getcomposer.org/installer | /usr/local/bin/php  \
+    &&  /bin/mv composer.phar /usr/local/bin/composer  \
+    &&  composer config -g repo.packagist composer https://packagist.phpcomposer.com \
+    \
+
 EXPOSE 9000
 CMD ["php-fpm"]
+
+
 
 
 
