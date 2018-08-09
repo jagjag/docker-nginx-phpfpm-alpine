@@ -5,7 +5,8 @@ MAINTAINER Jiang Jiang <jiangjiang@xdf.cn>
 # Chinese network optimize
 RUN echo 'http://mirrors.ustc.edu.cn/alpine/v3.7/main' > /etc/apk/repositories \ 
     && echo 'http://mirrors.ustc.edu.cn/alpine/v3.7/community' >>/etc/apk/repositories \
-    && apk update RUN apk add tzdata \
+    && apk update RUN apk add tzdata 
+    
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
 
