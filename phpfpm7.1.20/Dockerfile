@@ -194,9 +194,10 @@ VOLUME /var/log/php
 ENTRYPOINT ["docker-php-entrypoint"]
 
 
-RUN /usr/local/bin/pecl install mongodb 
-    && /usr/local/bin/pecl install redis
-    && /usr/local/bin/pecl install rdkafka
+RUN /usr/local/bin/pecl install mongodb \
+    && /usr/local/bin/pecl install redis \
+    && /usr/local/bin/pecl install rdkafka \
+    \
 
 WORKDIR /var/www/html
 
