@@ -262,7 +262,7 @@ RUN set -ex \
 
 RUN set -ex \
     && echo 'extension=redis.so' > /usr/local/etc/php/conf.d/redis.ini \
-    && echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini \
+    && echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini 
 
 COPY www.conf /usr/local/etc/php-fpm.d/
 
