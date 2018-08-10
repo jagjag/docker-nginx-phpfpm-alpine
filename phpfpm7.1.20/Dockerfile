@@ -28,8 +28,7 @@ ENV PHPIZE_DEPS \
         libpng  \
         libpng-dev \
         bzip2-dev \
-        curl-dev \
-        \
+        curl-dev
 
 # persistent / runtime deps
 RUN apk add --no-cache --virtual .persistent-deps \
