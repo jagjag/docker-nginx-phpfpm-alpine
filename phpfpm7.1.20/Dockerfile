@@ -3,8 +3,8 @@ FROM alpine:3.7
 MAINTAINER Jiang Jiang <jiangjiang@xdf.cn>
 
 # Chinese network optimize
-RUN echo 'http://mirrors.aliyun.com/alpine/v3.7/main/' > /etc/apk/repositories \
-&& echo 'http://mirrors.aliyun.com/alpine/v3.7/community/' >>/etc/apk/repositories \
+RUN echo 'https://mirrors.ustc.edu.cn/alpine/v3.7/main/' > /etc/apk/repositories \
+&& echo 'https://mirrors.ustc.edu.cn/alpine/v3.7/community/' >>/etc/apk/repositories \
 && apk update RUN apk add tzdata 
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
@@ -24,10 +24,12 @@ ENV PHPIZE_DEPS \
 		make \
 		pkgconf \
 		re2c \
-		jpeg \
-        libjpeg \
-        libpng \
-        libpng-dev \
+		jpeg #gd \
+        libjpeg #gd \
+        libpng #gd \
+        libpng-dev #gd \
+        bzip2-dev #bz2\
+        curl-dev #curl \
         \
 
 # persistent / runtime deps
