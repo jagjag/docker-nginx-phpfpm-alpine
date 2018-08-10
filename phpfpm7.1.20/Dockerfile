@@ -26,6 +26,7 @@ ENV PHPIZE_DEPS \
 		re2c \
 		jpeg \
         libjpeg \
+        jpeg-dev \
         libpng  \
         libpng-dev \
         bzip2-dev \
