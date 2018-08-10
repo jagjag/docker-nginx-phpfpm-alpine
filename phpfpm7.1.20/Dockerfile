@@ -189,6 +189,10 @@ RUN set -xe \
 	&& make install \
 	&& { find /usr/local/bin /usr/local/sbin -type f -perm +0111 -exec strip --strip-all '{}' + || true; } \
 	&& make clean \
+	#  pecl extension
+    && /usr/local/bin/pecl install mongodb \
+    && /usr/local/bin/pecl install redis \
+    && /usr/local/bin/pecl install rdkafka \
 	&& cd / \
 	&& docker-php-source delete \
 	\
@@ -211,10 +215,6 @@ COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
 VOLUME /var/log/php
 ENTRYPOINT ["docker-php-entrypoint"]
 
-
-RUN /usr/local/bin/pecl install mongodb \
-    && /usr/local/bin/pecl install redis \
-    && /usr/local/bin/pecl install rdkafka 
 
 WORKDIR /var/www/html
 
