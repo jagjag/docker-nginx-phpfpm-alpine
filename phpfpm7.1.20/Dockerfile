@@ -38,6 +38,9 @@ ENV PHPIZE_DEPS \
         icu-dev \
         gettext \
         gettext-dev \
+        # for rdkafka
+        librdkafka \
+        librdkafka-dev \
         curl-dev
 
 # persistent / runtime deps
@@ -239,7 +242,7 @@ RUN set -ex \
 		echo; \
 		echo '[www]'; \
 		echo '; if we send this to /proc/self/fd/1, it never appears'; \
-		echo 'access.log = /proc/self/fd/2'; \
+		#echo 'access.log = /proc/self/fd/2'; \
 		echo 'access.log = /var/log/php/access.log'; \	
 		echo; \
 		echo 'clear_env = no'; \
@@ -254,6 +257,14 @@ RUN set -ex \
 		echo '[www]'; \
 		echo 'listen = 9000'; \
 	} | tee php-fpm.d/zz-docker.conf
+
+# enable extension
+
+RUN set -ex \
+    && echo 'extension=redis.so' > /usr/local/etc/php/conf.d/redis.ini \
+    && echo 'extension=mysql.so' > /usr/local/etc/php/conf.d/mysql.ini \
+    && echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini \
+    && echo 'extension=pdo_mysql.so' > /usr/local/etc/php/conf.d/pdo_mysql.ini 
 
 
 COPY www.conf /usr/local/etc/php-fpm.d/
