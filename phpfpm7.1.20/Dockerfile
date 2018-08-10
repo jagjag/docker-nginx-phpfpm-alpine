@@ -215,7 +215,6 @@ COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
 VOLUME /var/log/php
 ENTRYPOINT ["docker-php-entrypoint"]
 
-
 WORKDIR /var/www/html
 
 RUN set -ex \
