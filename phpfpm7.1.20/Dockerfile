@@ -29,6 +29,8 @@ ENV PHPIZE_DEPS \
         libpng  \
         libpng-dev \
         bzip2-dev \
+        freetype \
+        freetype-dev \
         curl-dev
 
 # persistent / runtime deps
