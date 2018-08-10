@@ -36,6 +36,7 @@ ENV PHPIZE_DEPS \
         freetype-dev \
         # for intl extension
         icu-dev \
+        gettext \
         curl-dev
 
 # persistent / runtime deps
@@ -210,8 +211,7 @@ ENTRYPOINT ["docker-php-entrypoint"]
 
 RUN /usr/local/bin/pecl install mongodb \
     && /usr/local/bin/pecl install redis \
-    && /usr/local/bin/pecl install rdkafka \
-    \
+    && /usr/local/bin/pecl install rdkafka 
 
 WORKDIR /var/www/html
 
