@@ -24,6 +24,7 @@ ENV PHPIZE_DEPS \
 		make \
 		pkgconf \
 		re2c \
+		jpeg \
         libjpeg \
         libpng  \
         libpng-dev \
