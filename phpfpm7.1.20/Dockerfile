@@ -213,10 +213,8 @@ RUN set -xe \
 	&& pecl update-channels \
 	&& rm -rf /tmp/pear ~/.pearrc
 
-COPY docker-php-ext-* docker-php-entrypoint /u
-
-sr/local/bin/
-RUN chmod +x /usr/local/bin/docker-php-entrypoint
+COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-php-*
 VOLUME /var/log/php
 ENTRYPOINT ["/usr/local/bin/docker-php-entrypoint"]
 
