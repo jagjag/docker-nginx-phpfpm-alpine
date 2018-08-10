@@ -115,6 +115,8 @@ RUN set -xe; \
 	apk del .fetch-deps
 
 COPY docker-php-source /usr/local/bin/
+# for  /bin/sh: docker-php-source: Permission denied
+RUN chmod +x /usr/local/bin/docker-php-source
 
 RUN set -xe \
 	&& apk add --no-cache --virtual .build-deps \
