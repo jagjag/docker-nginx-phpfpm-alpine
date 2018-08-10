@@ -37,6 +37,7 @@ ENV PHPIZE_DEPS \
         # for intl extension
         icu-dev \
         gettext \
+        gettext-dev \
         curl-dev
 
 # persistent / runtime deps
