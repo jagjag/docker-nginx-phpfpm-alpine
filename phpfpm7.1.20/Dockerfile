@@ -24,12 +24,11 @@ ENV PHPIZE_DEPS \
 		make \
 		pkgconf \
 		re2c \
-		jpeg #gd \
-        libjpeg #gd \
-        libpng #gd \
-        libpng-dev #gd \
-        bzip2-dev #bz2\
-        curl-dev #curl \
+        libjpeg \
+        libpng  \
+        libpng-dev \
+        bzip2-dev \
+        curl-dev \
         \
 
 # persistent / runtime deps
