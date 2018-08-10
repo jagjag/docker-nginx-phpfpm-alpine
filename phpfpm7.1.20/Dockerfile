@@ -213,7 +213,9 @@ RUN set -xe \
 	&& pecl update-channels \
 	&& rm -rf /tmp/pear ~/.pearrc
 
-COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
+COPY docker-php-ext-* docker-php-entrypoint /u
+
+sr/local/bin/
 RUN chmod +x /usr/local/bin/docker-php-entrypoint
 VOLUME /var/log/php
 ENTRYPOINT ["/usr/local/bin/docker-php-entrypoint"]
@@ -262,16 +264,13 @@ RUN set -ex \
 
 RUN set -ex \
     && echo 'extension=redis.so' > /usr/local/etc/php/conf.d/redis.ini \
-    && echo 'extension=mysql.so' > /usr/local/etc/php/conf.d/mysql.ini \
     && echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini \
-    && echo 'extension=pdo_mysql.so' > /usr/local/etc/php/conf.d/pdo_mysql.ini 
-
 
 COPY www.conf /usr/local/etc/php-fpm.d/
 
-# RUN /usr/bin/curl -sS https://getcomposer.org/installer | /usr/local/bin/php  \
-#    &&  /bin/mv composer.phar /usr/local/bin/composer  \
-#    &&  composer config -g repo.packagist composer https://packagist.phpcomposer.com 
+RUN /usr/bin/curl -sS https://getcomposer.org/installer | /usr/local/bin/php  \
+    &&  /bin/mv composer.phar /usr/local/bin/composer  \
+    &&  composer config -g repo.packagist composer https://packagist.phpcomposer.com 
 
 EXPOSE 9000
 CMD ["php-fpm"]
