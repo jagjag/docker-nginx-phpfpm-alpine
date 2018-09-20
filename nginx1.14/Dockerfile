@@ -15,7 +15,7 @@ RUN echo 'deb http://mirrors.163.com/debian/ stretch main non-free contrib ' > /
     && echo 'deb http://mirrors.163.com/debian-security/ stretch/updates main non-free contrib ' >> /etc/apt/sources.list \ 
     && echo 'deb-src http://mirrors.163.com/debian-security/ stretch/updates main non-free contrib' >> /etc/apt/sources.list \
     && apt-get update \
-	&& apt-get install -y tzdata \
+    && apt-get install -y tzdata vim procps curl \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
 
@@ -105,7 +105,7 @@ RUN set -x \
     && addgroup --gid 800 --system www \
     && adduser --uid 800 --disabled-password --system --home /var/cache/nginx --shell /sbin/nologin --gid 800 www
 	
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 	
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
